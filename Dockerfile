@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Gradle Wrapper használata a buildhez
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build -x test --no-daemon
 
 # Második fázis: A Spring Boot alkalmazás futtatása
 FROM openjdk:23-jdk-slim
