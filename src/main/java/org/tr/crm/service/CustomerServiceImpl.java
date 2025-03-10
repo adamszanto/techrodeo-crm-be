@@ -16,11 +16,8 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public List<CustomerDTO> getCustomers() {
-        List<Customer> customers = customerRepository.findAll();
-        return customers.stream()
-                .map(customer -> new CustomerDTO(customer.getName(), customer.getAge(), customer.getAddress()))
-                .collect(Collectors.toList());
+    public List<Customer> getCustomers() {
+        return customerRepository.findAll();
     }
 
     @Override
