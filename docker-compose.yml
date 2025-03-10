@@ -21,7 +21,8 @@ services:
 
   techrodeo-crm-be:
     image: techrodeo-crm-be
-    build: ./techrodeo-crm-be
+    build:
+      context: ./techrodeo-crm-be
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/techrodeo
       SPRING_DATASOURCE_USERNAME: root
@@ -37,9 +38,10 @@ services:
 
   techrodeo-crm-bff:
     image: techrodeo-crm-bff
-    build: ./techrodeo-crm-bff
+    build:
+      context: ./techrodeo-crm-bff
     environment:
-      BACKEND_URL: http://techrodeo.hu/v1  # BFF hívja a backendet a publikus domainen keresztül
+      BACKEND_URL: http://techrodeo.hu/v1
     ports:
       - "8082:8082"
     depends_on:
