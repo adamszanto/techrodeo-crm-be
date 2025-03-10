@@ -6,7 +6,7 @@ import org.tr.crm.repository.entity.Customer;
 import java.util.List;
 
 public interface CustomerService {
-    List<Customer> getCustomers();
+    List<CustomerDTO> getCustomers();
     void addCustomer(CustomerDTO customer);
     void deleteCustomer(String customerId);
 }

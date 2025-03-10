@@ -16,7 +16,7 @@ public class CustomerController {
     CustomerService customerService;
 
     @GetMapping("/customers")
-    public List<Customer> getCustomers() {
+    public List<CustomerDTO> getCustomers() {
         System.out.println("getCustomers() called");
         return customerService.getCustomers();
     }
