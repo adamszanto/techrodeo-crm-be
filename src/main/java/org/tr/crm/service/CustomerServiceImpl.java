@@ -19,22 +19,24 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDTO> getCustomers() {
         List<Customer> customers = customerRepository.findAll();
         return customers.stream()
-                .map(customer -> new CustomerDTO(customer.getName(), customer.getAge(), customer.getAddress()))
+                .map(customer -> new CustomerDTO(customer.getId() ,customer.getName(), customer.getAge(), customer.getAddress()))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void addCustomer(CustomerDTO customer) {
+    public CustomerDTO addCustomer(CustomerDTO customer) {
         Customer newCustomer = new Customer();
 
         newCustomer.setName(customer.getName());
         newCustomer.setAge(customer.getAge());
         newCustomer.setAddress(customer.getAddress());
         customerRepository.save(newCustomer);
+
+        return new CustomerDTO(newCustomer.getId(), newCustomer.getName(), newCustomer.getAge(), newCustomer.getAddress());
     }
 
     @Override
-    public void deleteCustomer(String customerId) {
-        customerRepository.deleteById(customerId);
+    public void deleteCustomer(Long customerId) {
+        customerRepository.deleteById(customerId.toString());
     }
 }

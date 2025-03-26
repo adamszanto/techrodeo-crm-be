@@ -45,6 +45,13 @@ services:
     networks:
       - techrodeo-network
 
+  techrodeo-crm-fe:
+    image: adamsz1/techrodeo-crm-fe
+    ports:
+      - "4200:4200"
+    networks:
+      - techrodeo-network
+
 networks:
   techrodeo-network:
     driver: bridge

@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class CustomerDTO {
 
+    private Long id;
+
     @Schema(description = "The name of the customer", defaultValue = "John Doe")
     private String name;
 
@@ -13,13 +15,22 @@ public class CustomerDTO {
     @Schema(description = "The address of the customer", defaultValue = "123 Main St")
     private String address;
 
-    public CustomerDTO(String name, Integer age, String address) {
+    public CustomerDTO(Long id, String name, Integer age, String address) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.address = address;
     }
 
     public CustomerDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

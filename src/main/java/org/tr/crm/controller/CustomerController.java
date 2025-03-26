@@ -9,6 +9,7 @@ import org.tr.crm.service.CustomerService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8085")
 @RestController
 @RequestMapping("/v1")
 public class CustomerController {
@@ -22,14 +23,14 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public ResponseEntity<String> addCustomer(@RequestBody CustomerDTO customer) {
-        customerService.addCustomer(customer);
-        return ResponseEntity.ok("Customer added successfully");
+    public ResponseEntity<CustomerDTO> addCustomer(@RequestBody CustomerDTO customer) {
+        CustomerDTO savedCustomer = customerService.addCustomer(customer);
+        return ResponseEntity.ok(savedCustomer);
     }
 
     @DeleteMapping("/customer/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable String id) {
-        customerService.deleteCustomer(id);  // MongoDB-ből töröljük az ügyfelet
+    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
         return ResponseEntity.ok("Customer deleted successfully");
     }
 }
